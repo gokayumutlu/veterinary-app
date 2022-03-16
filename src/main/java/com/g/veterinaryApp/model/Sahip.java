@@ -3,27 +3,28 @@ package com.g.veterinaryApp.model;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "sahipler")
-public class Sahip {
+public class Sahip implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotBlank(message = "İsim giriniz")
+    //@NotBlank(message = "İsim giriniz")
     private String isim;
 
-    @NotBlank(message = "Telefon numarası giriniz")
+    //@NotBlank(message = "Telefon numarası giriniz")
     @Digits(fraction =0,integer = 10)
     private String telefon;
 
-    @NotBlank(message = "Email giriniz")
+    //@NotBlank(message = "Email giriniz")
     private String email;
 
-    @OneToMany(mappedBy = "hayvan",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sahip",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Hayvan> hayvanlar;
 
     public Sahip(){

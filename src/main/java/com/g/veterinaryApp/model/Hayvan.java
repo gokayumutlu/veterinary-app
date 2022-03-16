@@ -5,24 +5,25 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 @Entity
 @Table(name="hayvanlar")
-public class Hayvan {
+public class Hayvan implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotBlank(message = "İsim giriniz")
+    //@NotBlank(message = "İsim giriniz")
     private String isim;
 
-    @NotBlank(message = "Cins giriniz")
+    //@NotBlank(message = "Cins giriniz")
     private String cins;
 
-    @NotBlank(message = "Yaş giriniz")
+    //@NotBlank(message = "Yaş giriniz")
     private int yas;
 
-    @NotBlank(message = "Açıklama giriniz")
+    //@NotBlank(message = "Açıklama giriniz")
     private String aciklama;
 
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
